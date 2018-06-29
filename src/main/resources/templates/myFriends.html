@@ -1,0 +1,100 @@
+<html>
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<h3>
+			<a href="/user/profile" style="margin-left: 73px;">Profile</a>
+		</h3>
+
+<!-- 		<span style="float: right; margin-right: 711px; margin-top: -25px;"> -->
+<!-- 			<input class="form-control" type="text" name="searchFriend" id="autocomplete" -->
+<!-- 			autocomplete="off" style="margin-top: 27px; margin-right: -175px;" /> -->
+<!-- 		</span> <span> <input class="btn btn-info" style="margin-left: 357px; margin-top: 2px;" -->
+<!-- 			type="submit" value="Search" onclick="searchButtonClickEvent()" /> 		<input style="margin-left: 357px; margin-top: 2px;"type="submit" value="Search" th:onclick="'javascript:getContactId(\'' + ${user.id , } + '\');'" /> -->
+<!-- 		</span> -->
+	<div class="form-group" style="margin-bottom: 70px;">
+      <label class="control-label col-sm-4" style="text-align: right;"><input type="submit" value="Search" class="btn btn-info" onclick="searchButtonClickEvent()"></label>
+      <input style="width: 326px;" type="text" class="form-control col-sm-8" id="autocomplete" name="searchFriend">
+    </div>
+
+<div id="replaceMe">
+<table class="table table-striped" style="margin-top: 22px;">
+<tr th:each="friend, line : ${users}">
+<td class="col-md-3" th:text="${line.index +1+'. '}" style="text-align:right;"></td>
+<td style="width: 1px;"><img th:src="'/getImage?name=' + ${friend.imageName}" width="50" height="50" /></td>
+<td style="width: 207px;" th:text="${friend.firstName.substring(0, 1).toUpperCase() +friend.firstName.substring(1)+' '+ friend.lastName.substring(0, 1).toUpperCase()+friend.lastName.substring(1)}"></td>
+<td id="unfriend-column"><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Unfriend</button></td>
+<td class="hide" id="success-unfriend"><label type="button" class="btn btn-success"></label></td>
+			<!-- Modal -->
+				<div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog">
+
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Unfriend From Friends</h4>
+							</div>
+							<div class="modal-body">
+								<p>Are you sure you want to unfriend this friend?</p>
+							</div>
+							<div class="modal-footer">
+								<a data-dismiss="modal" class="btn btn-success" href="javascript:;"
+									th:onclick="'yesButtonClicked(\'' + ${friend.id} + '\',\'' + ${user.id} +'\', this);'">Yes</a>
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">No</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+</tr>
+</table>
+</div>
+
+<!-- 		<div id="map" th:if="${search!=null}" style="margin-left: 425px;"> -->
+<!-- 			<p></p> -->
+<!-- <!-- 			<div id="feedback" style="margin-left: 425px;"> --> 
+<!-- <!-- 				<p></p> --> 
+<!-- 				<table th:each="fuser, line : ${friendList}"> -->
+<!-- 					<tr> -->
+<!-- 										<td th:text="${line.index +1}"></td> -->
+<!-- 						<td -->
+<!-- 							th:text="${line.index +1+'. '+fuser.firstName.substring(0, 1).toUpperCase() +fuser.firstName.substring(1)+' '+ fuser.lastName.substring(0, 1).toUpperCase()+fuser.lastName.substring(1)}"></td> -->
+<!-- 						<td></td> -->
+<!-- 					</tr> -->
+<!-- 					<tr> -->
+<!-- 						<td><a class="btn btn btn-primary" href="javascript:;" -->
+<!-- 							th:onclick="'sendRequestClicked(\'' + ${fuser.id} + '\',\'' + ${user.id} +'\', this);'" -->
+<!-- 							style="margin-left: 17px;">Send Request</a></td> -->
+<!-- 						<td></td> -->
+<!-- 										<td></td> -->
+<!-- 					</tr> -->
+<!-- 				</table> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 		<div th:if="${requestList!=null}" style="margin-left: 425px;"><p></p> -->
+<!-- 			<table th:each="user, line : ${requestList}"> -->
+<!-- 				<tr> -->
+<!-- <!-- 				<td th:text="${line.index +1}"></td> --> 
+<!-- 				<td th:text="${line.index +1+'. '+user.firstName.substring(0, 1).toUpperCase() +user.firstName.substring(1)}"></td> -->
+<!-- 				<td th:text="${user.lastName.substring(0, 1).toUpperCase()+user.lastName.substring(1)}"></td> -->
+<!-- 				</tr> -->
+<!-- 				<tr> -->
+<!-- 				<td><a class="btn btn-success" href="javascript:;" th:onclick="'acceptButtonClicked(\'' + ${fuser.id} + '\',\'' + ${user.id} +'\', this);'" >Accept</a></td> -->
+<!-- 				<td><a class="btn btn-danger" href="javascript:;" th:onclick="'rejectButtonClicked(\'' + ${fuser.id} + '\',\'' + ${user.id} +'\', this);'" >Reject</a></td> -->
+<!-- 				</tr> -->
+<!-- 			</table> -->
+<!-- 		</div> -->
+		<script th:src="@{/js/jquery.autocomplete.js}"></script>
+		<script th:src="@{/js/profile.js}"></script>
+</body>
+</html>

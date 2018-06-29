@@ -1,0 +1,91 @@
+
+<div id="map" th:if="${search!=null}" style="margin-left: 425px;">
+	<p></p>
+	<table class="table table-striped">
+		<tr th:each="fuser, line : ${friendList}">
+			<td th:text="${line.index +1+'. '}" ></td>
+			<td Style="padding: 8px;"><img th:src="'/getImage?name=' + ${fuser.imageName}" width="50" height="50" /></td>
+			<td Style="padding: 8px;" th:text="${fuser.firstName.substring(0, 1).toUpperCase() +fuser.firstName.substring(1)+' '+ fuser.lastName.substring(0, 1).toUpperCase()+fuser.lastName.substring(1)}"></td>
+			<td id="sendRequest-column" th:if="${fuser.isFriend==false and fuser.alreadySent==false}"><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Send Request</button></td>
+			<td><label th:if="${fuser.isFriend==true and fuser.alreadySent==false}" type="button" class="btn btn-success">Friends</label></td>
+			<td><label th:if="${fuser.alreadySent==true}" type="button" class="btn btn-success">Already Sent FriendRequest</label></td>
+			<td class="hide" id="success-sendRequest"><label type="button" class="btn btn-success"></label></td>
+			<!-- Modal -->
+				<div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog">
+
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Sending Friend Request</h4>
+							</div>
+							<div class="modal-body">
+								<p>Are you sure want to send friend request?</p>
+							</div>
+							<div class="modal-footer">
+								<a data-dismiss="modal" class="btn btn-success" href="javascript:;"
+									th:onclick="'sendRequestClicked(\'' + ${fuser.id} + '\',\'' + ${user.id} +'\', this);'">Yes</a>
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">No</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+		</tr>
+<!-- 		<tr> -->
+<!-- 			<td></td> -->
+<!-- 			<td colspan="2" Style="padding: 8px;"><a th:if="${fuser.isFriend==false}" class="btn btn btn-primary" href="javascript:;" th:onclick="'sendRequestClicked(\'' + ${fuser.id} + '\',\'' + ${user.id} +'\', this);'">Send Request</a> -->
+<!-- 			<label th:if="${fuser.isFriend==true}" type="button" class="btn btn-success">Friends</label></td> -->
+<!-- 			<td></td> -->
+<!-- 			<td id="unfriend-column"><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Unfriend</button></td> -->
+<!-- 			<td class="hide" id="success-sendRequest"><label type="button" class="btn btn-success"></label></td> -->
+<!-- 			<!-- Modal --> 
+<!-- 				<div class="modal fade" id="myModal" role="dialog"> -->
+<!-- 					<div class="modal-dialog"> -->
+
+<!-- 						Modal content -->
+<!-- 						<div class="modal-content"> -->
+<!-- 							<div class="modal-header"> -->
+<!-- 								<button type="button" class="close" data-dismiss="modal">&times;</button> -->
+<!-- 								<h4 class="modal-title">Unfriend From Friends</h4> -->
+<!-- 							</div> -->
+<!-- 							<div class="modal-body"> -->
+<!-- 								<p>Are you sure you want to unfriend this friend?</p> -->
+<!-- 							</div> -->
+<!-- 							<div class="modal-footer"> -->
+<!-- 								<a data-dismiss="modal" class="btn btn-success" href="javascript:;" -->
+<!-- 									th:onclick="'yesButtonClicked(\'' + ${friend.id} + '\',\'' + ${user.id} +'\', this);'">Yes</a> -->
+<!-- 								<button type="button" class="btn btn-default" -->
+<!-- 									data-dismiss="modal">No</button> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 		</tr> -->
+	</table>
+</div>
+
+<!-- <div id="map" style="margin-left: 425px;"> -->
+<!-- 	<div th:each="fuser, line : ${friendList}" > -->
+<!-- 	<div class="row"> -->
+<!-- 		<div th:text="${line.index +1+'. '}"></div> -->
+<!-- 		<div Style="padding: 8px;"> -->
+<!-- 			<img th:src="'/getImage?name=' + ${fuser.imageName}" width="100" -->
+<!-- 				height="100"> -->
+<!-- 		</div> -->
+<!-- 		<div Style="padding: 8px;" -->
+<!-- 			th:text="${fuser.firstName.substring(0, 1).toUpperCase() +fuser.firstName.substring(1)+' '+ fuser.lastName.substring(0, 1).toUpperCase()+fuser.lastName.substring(1)}"></div> -->
+<!-- 	</div> -->
+<!-- 	<div class="row"> -->
+<!-- 		<div Style="padding: 8px;"> -->
+<!-- 			<a class="btn btn btn-primary" href="javascript:;" -->
+<!-- 				th:onclick="'sendRequestClicked(\'' + ${fuser.id} + '\',\'' + ${user.id} +'\', this);'">Send Request</a>> -->
+<!-- 		</div> -->
+
+
+<!-- 	</div> -->
+<!-- 	</div> -->
+<!-- </div> -->

@@ -1,0 +1,214 @@
+<html>
+<head>
+
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script th:src="@{/js/home.js}"></script>
+	<script th:src="@{/js/countries.js}"></script>
+</head>
+<body>
+
+<!-- Upload image : -->
+<!-- <form method="POST" action="/upload" enctype="multipart/form-data"> -->
+<!--     <input type="file" name="image" /><br/><br/> -->
+<!--     <input type="submit" value="Submit" /> -->
+<!-- </form> -->
+
+<!-- <img th:src="${'/bhaumik/' + practice.imageName}"width="100" height="100" /> -->
+<div class="container">
+<h2 style="margin-left: 445px;" >Registration.html</h2>
+<a href="/user/login" style="margin-left: 541px;" >Login</a>
+<p th:text="${message}" id="message" style="color:red;"></p>
+<form class="form-horizontal" id="myForm" action="/user/registration" method="post" enctype="multipart/form-data">
+<!-- 	FirstName :  -->
+<!-- 	<input name="firstName" id="firstName" type="text" th:value="${user.firstName}"> -->
+<!-- 	<br/><br/> -->
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="firstName">FirstName:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="firstName" placeholder="Enter firstName" name="firstName" th:value="${user.firstName}">
+      </div>
+    </div>
+    
+<!-- 	LastName :  -->
+<!-- 	<input name="lastName" id="lastName" type="text" th:value="${user.lastName}"> -->
+<!-- 	<br/><br/> -->
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="lastName">LastName:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="lastName" placeholder="Enter lastName" name="lastName" th:value="${user.lastName}">
+      </div>
+    </div>
+	
+<!-- 	Email :  -->
+<!-- 	<input name="email" id="email" type="email" th:value="${user.email}"> -->
+<!-- 	<br/><br/> -->
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" th:value="${user.email}">
+      </div>
+    </div>
+	
+<!-- 	Password :  -->
+<!-- 	<input name="password" id="password" type="text" th:value="${user.password}"> -->
+<!-- 	<br/><br/> -->
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="password">Password:</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" th:value="${user.password}">
+      </div>
+    </div>
+	
+<!-- 	Confirm Password :  -->
+<!-- 	<input name="confirmPassword" id="confirmPassword" type="text" th:value="${user.confirmPassword}"> -->
+<!-- 	<br/><br/> -->
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="password">Confirm Password:</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Enter confirmPassword" name="confirmPassword" th:value="${user.confirmPassword}">
+      </div>
+    </div>
+	
+<!-- 	Gender :  -->
+<!-- 	<input name="gender" type="radio" value="Male" th:checked="${user.gender == 'Male'}">Male -->
+<!-- 	<input name="gender" type="radio" value="Female" th:checked="${user.gender == 'Female'}">Female -->
+<!-- 	<br/><br/> -->
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="password">Gender:</label>
+      <div class="col-sm-10">
+	  <label class="radio-inline">
+      	<input name="gender" type="radio" value="Male" th:checked="${user.gender == 'Male'}">Male
+      </label>	
+      <label class="radio-inline">	
+      	<input name="gender" type="radio" value="Female" th:checked="${user.gender == 'Female'}">Female
+      </label>
+      </div>
+    </div>
+	
+<!-- 	Hobbies : <br/> -->
+<!-- 	<input name="hobby" type="checkbox" value="Cricket" th:checked="${#lists.contains(user.hobby, 'Cricket')}">Cricket<br/> -->
+<!-- 	<input name="hobby" type="checkbox" value="Basketball" th:checked="${#lists.contains(user.hobby, 'Basketball')}">Basketball<br/> -->
+<!-- 	<input name="hobby" type="checkbox" value="Vollyball" th:checked="${#lists.contains(user.hobby, 'Vollyball')}">Vollyball<br/> -->
+<!-- 	<input name="hobby" type="checkbox" value="Football" th:checked="${#lists.contains(user.hobby, 'Football')}">Football<br/> -->
+<!-- 	<br/><br/> -->
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="hobbies">Hobbies:</label>
+      <div class="checkbox col-sm-10">
+      	<label><input name="hobby" type="checkbox" value="Cricket" th:checked="${#lists.contains(user.hobby, 'Cricket')}">Cricket</label>
+      	
+      	<label><input name="hobby" type="checkbox" value="Basketball" th:checked="${#lists.contains(user.hobby, 'Basketball')}">Basketball</label>
+      	
+      	<label><input name="hobby" type="checkbox" value="Vollyball" th:checked="${#lists.contains(user.hobby, 'Vollyball')}">Vollyball</label>
+      	
+      	<label><input name="hobby" type="checkbox" value="Football" th:checked="${#lists.contains(user.hobby, 'Football')}">Football</label>
+      </div>
+    </div>  
+	
+<!-- 	Country :  -->
+<!-- 	<select name="country" id="country"> -->
+<!-- 		<option  value="India" th:selected="${user.state == 'India'}" >India</option> -->
+<!-- 		<option  value="USA" th:selected="${user.state == 'USA'}" >USA</option> -->
+<!-- 	</select> -->
+<!-- 	<br/><br/> -->
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="country">Country:</label>
+      <div class="col-sm-10">
+      	<label>
+      		<select class="form-control" id="country" name="country"></select>
+      	</label>
+      </div>
+	</div> 
+	
+<!-- 	State :  -->
+<!-- 	<select name="state" id ="state"> -->
+<!-- 		<option value="Gujarat" th:selected="${user.state == 'Gujarat'}">Gujarat</option> -->
+<!-- 		<option value="Texas" th:selected="${user.state == 'Texas'}">Texas</option> -->
+<!-- 	</select> -->
+<!-- 	<br/><br/> -->
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="state">State:</label>
+      <div class="col-sm-10">
+      	<label>
+      		<select class="form-control" id="state" name="state"></select>
+      	</label>
+      </div>	
+	</div>
+	
+<!-- 	City :  -->
+<!-- 	<select name="city" id ="city"></select> -->
+<!-- 	<input name="city" id="city" type="text" th:value="${user.city}"> -->
+<!-- 	<br/><br/> -->
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="city">City:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="city" placeholder="Enter city" name="city" th:value="${user.city}">
+      </div>
+    </div>
+	
+<!-- 	th:field="${user.addresses}"	 -->
+<!-- 	Address1 :  -->
+<!-- 	<textarea name="addresses" id="addresses" rows="10" cols="30"  ></textarea> -->
+<!-- 	<br/><br/> -->
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="Address1">Address1:</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" name="addresses" id="addresses" rows="5" ></textarea>
+      </div>
+    </div>
+	
+<!-- 	Address2 :  -->
+<!-- 	<textarea name="addresses" id="addresses" rows="10" cols="30" ></textarea> -->
+<!-- 	<br/><br/> -->
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="Address2">Address2:</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" name="addresses" id="addresses" rows="5" ></textarea>
+      </div>
+    </div>
+	
+<!-- 	Address3 :  -->
+<!-- 	<textarea name="addresses" id="addresses" rows="10" cols="30"></textarea> -->
+<!-- 	<br/><br/> -->
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="Address3">Address3:</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" name="addresses" id="addresses" rows="5" ></textarea>
+      </div>
+    </div>
+	
+<!-- 	Profile Image :  -->
+<!-- 	<input type="file" name="image" /><br/><br/> -->
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="image">Profile Image:</label>
+      <div class="col-sm-10">
+        <input type="file" class="form-control" name="image">
+      </div>
+    </div>
+	
+	<input type="hidden" name="id" th:value="${user.id}" />
+	
+	<div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">	
+		<input class="btn btn-primary" style="margin-left: 336px;" type="button" onclick="submitClicked()" value="Register" />&nbsp;
+		<input class="btn btn-primary" type="reset" value="Reset" />
+	  </div>
+	</div>
+
+</form>
+</div>	
+<!-- 	Select Country (with states):   <select id="country" name ="country"></select> </br></br> -->
+<!-- 	Select State: <select name ="state" id ="state"></select>  </br> </br> <hr/> -->
+<!-- 	Select Country:   <select id="country2" name ="country2"></select> -->
+<!-- </div> -->
+
+<script language="javascript">
+ 	populateCountries("country", "state"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+</script> 
+
+
+</body>
+</html>

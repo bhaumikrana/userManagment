@@ -1,0 +1,57 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h3><a href="/user/profile" style="margin-left : 73px;">Profile</a></h3>
+		<div th:if="${requestList!=null}" style="margin-left: 425px;"><p></p>
+			<table class="table table-striped">
+				<tr th:each="user, line : ${requestList}">
+				<td th:text="${line.index +1+'.'}"></td>
+				<td class="col-md-2"><img th:src="'/getImage?name=' + ${user.imageName}" width="50" height="50" /></td>
+				<td class="col-md-4" colspan="2" th:text="${user.firstName.substring(0, 1).toUpperCase() +user.firstName.substring(1)+' '+user.lastName.substring(0, 1).toUpperCase()+user.lastName.substring(1)}"></td>
+				<td id="column" Style="padding: 8px;"><button type="button" class="btn btn-info btn-lg accept">Accept</button><button style="margin-left: 9px;" type="button" class="btn btn-danger btn-lg reject">Reject</button></td>
+				<td class="hide" id="test"><label type="button" class="btn btn-success"></label></td>
+<!-- 				</tr> -->
+<!-- 				<tr> -->
+<!-- <!-- 				<td Style="padding: 8px;"><a class="btn btn-success" href="javascript:;" th:onclick="'acceptButtonClicked(\'' + ${fuser.id} + '\',\'' + ${user.id} +'\', this);'" >Accept</a></td> --> 
+<!-- <!-- 				<td Style="padding: 8px;"><a class="btn btn-danger" href="javascript:;" th:onclick="'rejectButtonClicked(\'' + ${fuser.id} + '\',\'' + ${user.id} +'\', this);'" >Reject</a></td> --> 
+<!-- 				<td id="column" Style="padding: 8px;"><button type="button" class="btn btn-info btn-lg" id="accept">Accept</button><button style="margin-left: 9px;" type="button" class="btn btn-info btn-lg" id="reject">Reject</button></td> -->
+<!-- 				<td class="hide" id="test"><label type="button" class="btn btn-success"></label></td> -->
+<!-- 				</tr> -->
+				
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog">
+
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title" id="popup-header"></h4>
+							</div>
+							<div class="modal-body">
+								<p id="popup-body">Some text in the modal.</p>
+							</div>
+							<div class="modal-footer">
+								<a id="acc" data-dismiss="modal" class="btn btn-success hide" href="javascript:;"
+									th:onclick="'acceptButtonClicked(\'' + ${fuser.id} + '\',\'' + ${user.id} +'\', this);'"></a>
+								<a id="rej" data-dismiss="modal" class="btn btn-success hide" href="javascript:;"
+									th:onclick="'rejectButtonClicked(\'' + ${fuser.id} + '\',\'' + ${user.id} +'\', this);'"></a>
+								<button type="button" class="btn btn-default" id="cancel"
+									data-dismiss="modal"></button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				</tr>
+			</table>
+		</div>
+</div>
+<script th:src="@{/js/profile.js}"></script>
+</body>
+</html>

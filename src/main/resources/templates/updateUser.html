@@ -1,0 +1,99 @@
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script th:src="@{/js/home.js}"></script>
+</head>
+<body>
+
+	<a href="/user/login" style="margin-left : 50px;" >Login</a>
+	<p><a href="/user/dashboard" style="margin-left : 50px;">Dashboard</a></p>
+	<p><a href="/user/profile" style="margin-left : 50px;">Profile</a></p>
+	<p th:text="${message}" id="message" style="color:red;"></p>
+	
+	<form id="myForm" action="/user/registration" method="post" enctype="multipart/form-data">
+		FirstName : 
+		<input name="firstName" id="firstName" type="text" th:value="${user.firstName}">
+		<br/><br/>
+		
+		LastName : 
+		<input name="lastName" id="lastName" type="text" th:value="${user.lastName}">
+		<br/><br/>
+		
+		Email : 
+		<input name="email" id="email" type="email" th:value="${user.email}">
+		<br/><br/>
+		
+		Password : 
+		<input name="password" id="password" type="text" th:value="${user.password}">
+		<br/><br/>
+		
+		Confirm Password : 
+		<input name="confirmPassword" id="confirmPassword" type="text" th:value="${user.confirmPassword}">
+		<br/><br/>
+		
+		Gender : 
+		<input name="gender" type="radio" value="Male" th:checked="${user.gender == 'Male'}">Male
+		<input name="gender" type="radio" value="Female" th:checked="${user.gender == 'Female'}">Female
+		<br/><br/>
+		
+		Hobbies : <br/>
+		<input name="hobby" type="checkbox" value="Cricket" th:checked="${#lists.contains(user.hobby, 'Cricket')}">Cricket<br/>
+		<input name="hobby" type="checkbox" value="Basketball" th:checked="${#lists.contains(user.hobby, 'Basketball')}">Basketball<br/>
+		<input name="hobby" type="checkbox" value="Vollyball" th:checked="${#lists.contains(user.hobby, 'Vollyball')}">Vollyball<br/>
+		<input name="hobby" type="checkbox" value="Football" th:checked="${#lists.contains(user.hobby, 'Football')}">Football<br/>
+		<br/><br/>
+	
+		City : 
+		<input name="city" id="city" type="text" th:value="${user.city}">
+		<br/><br/>
+		
+		State : 
+		<!-- 	<select name="state" th:value="${user.state}"> -->
+		<!-- 		<option value="Gujarat" >Gujarat</option> -->
+		<!-- 		<option value="Texas" >Texas</option> -->
+		<!-- 	</select> -->
+		<select name="state">
+			<option value="Gujarat" th:selected="${user.state == 'Gujarat'}">Gujarat</option>
+			<option value="Texas" th:selected="${user.state == 'Texas'}">Texas</option>
+		</select>
+		<br/><br/>
+			
+		Country : 
+		<select name="country" >
+			<option  value="India" th:selected="${user.state == 'India'}" >India</option>
+			<option  value="USA" th:selected="${user.state == 'USA'}" >USA</option>
+		</select>
+		<br/><br/>
+			
+<!-- 		Address :  -->
+<!-- 		<textarea name="address" id="address" rows="10" cols="30" th:field = "*{user.address}"></textarea> -->
+<!-- 		<br/><br/> -->
+
+		Address1 : 
+		<textarea name="addresses" id="addresses" rows="10" cols="30" ></textarea>
+		<br/><br/>
+		
+		Address2 : 
+		<textarea name="addresses" id="addresses" rows="10" cols="30" ></textarea>
+		<br/><br/>
+		
+		Address3 : 
+		<textarea name="addresses" id="addresses" rows="10" cols="30"></textarea>
+		<br/><br/>
+			
+		<img th:src="'/getImage?name=' + ${user.imageName}" width="100" height="100" />
+		<input type="hidden" name="imageName" th:value="${user.imageName}" />
+		Profile Image : 
+		<input type="file" name="image" /><br/><br/>
+		
+		<input type="hidden" name="id" th:value="${user.id}" />
+			
+		<input type="button" onclick="submitClicked()" value="Update" />&nbsp;
+		<input type="reset" value="Reset" />
+
+	</form>
+
+
+
+</body>
+</html>
