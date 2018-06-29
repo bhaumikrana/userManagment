@@ -127,8 +127,6 @@ public class UserController {
 	@ResponseBody
     public Object test(@RequestParam("name") String name) {
 		
-		System.out.println("This is ajax");
-		
 		//Delete user
 		//Success
 		ResponseData responseData = new ResponseData();
